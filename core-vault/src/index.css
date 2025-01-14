@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'awaken';
+    src: url("/core-vault/public/fonts/AwakenRegular-eZoyn.otf");
+  }
+
+  @font-face {
+    font-family: 'roboto';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  }
+
+  body {
+    @apply bg-nude-white font-roboto font-light
+  }
+
+  .max-w-container {
+    @apply max-w-[90rem] px-8 w-full mx-auto
+  }
+
+  h1 {
+    font-size: clamp(1.875rem, 1.5rem + 2.8169vw, 3.75rem);
+    @apply font-awaken capitalize leading-normal
+  }
+
+  h2 {
+    @apply font-awaken text-3xl leading-normal md:text-4xl
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl
+  }
+
+  h4 {
+    @apply text-xl
+  }
+
+  p {
+    @apply text-base md:text-lg
+  }
+
+  a {
+    @apply font-roboto font-medium text-lg tracking-wide
+  }
+
+  .hero {
+    width: 250px;
+    height: 250px;
+    filter: contrast(170%) brightness(100%);
+    background:
+      linear-gradient(75deg, rgba(168, 139, 250, 1), rgba(255, 255, 255, 0.12)),
+      radial-gradient(circle at 106% 17%, rgba(213, 141, 141, 1), rgba(0, 0, 0, 0.29)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 297 297' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.81' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
+    background-blend-mode: overlay, multiply;
+    background-size: 200% 200%, 150% 150%, auto;
+    /* Ensure gradients have enough space to move */
+    animation: radialMotion 8s infinite ease-in-out;
+  }
+
+  @keyframes radialMotion {
+    0% {
+      background-position: 50% 50%, 10% 10%, 0% 0%;
+      /* Radial starts near top-left */
+    }
+
+    25% {
+      background-position: 50% 50%, 80% 20%, 0% 0%;
+      /* Moves to near top-right */
+    }
+
+    50% {
+      background-position: 50% 50%, 90% 90%, 0% 0%;
+      /* Moves to bottom-right */
+    }
+
+    75% {
+      background-position: 50% 50%, 20% 80%, 0% 0%;
+      /* Moves to bottom-left */
+    }
+
+    100% {
+      background-position: 50% 50%, 10% 10%, 0% 0%;
+      /* Returns to top-left */
+    }
+  }
+
+  .MuiTabs-fixed {
+    overflow: visible !important;
+  }
+
+
+
+
+}
