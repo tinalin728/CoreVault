@@ -20,17 +20,17 @@ export default function How() {
         {
             id: '1',
             title: 'Link Your Accounts',
-            content: 'Connect all your accounts securely and gain a clear, consolidated view of your finances within minutes. Say goodbye to juggling multiple apps or manually entering data!',
+            content: 'Connect all your accounts securely for real-time tracking.',
         },
         {
             id: '2',
             title: 'Set Goals',
-            content: 'Stay motivated with personalized insights designed to align with your unique financial journey. Achieve your savings goals with tailored guidance every step of the way.',
+            content: 'Define and monitor your financial goals with AI insights.',
         },
         {
             id: '3',
             title: 'Manage like a Pro',
-            content: 'Manage your finances effortlessly with AI-driven recommendations, saving you both time and money while empowering you to take full control like an expert.',
+            content: 'Leverage smart payments and multi-currency support for seamless financial management.',
         },
     ];
 
@@ -65,86 +65,110 @@ export default function How() {
     });
 
     return (
-        <section ref={sectionRef} id="start" className="max-w-container relative h-full pt-[10rem]">
-            <div>
-                <Tag text="Core Benefits" />
-                <h2 className="text-center mt-4">Transform Your Finances in 3 Easy Steps</h2>
-                <div className="my-20">
-                    <div className="flex flex-col items-center justify-center w-full gap-8 md:flex-row md:flex-wrap md:gap-12 lg:gap-20">
-                        {benefits.map((item, index) => (
-                            <ReactCardFlip
-                                key={item.id}
-                                isFlipped={flip[index]}
-                                flipDirection="horizontal"
-                                containerClassName="[perspective:800px]"
-                            >
-                                {/* Front Side */}
-                                <div
-                                    ref={(el) => (cardRefs.current[index] = el)}
-                                    className="group min-h-[350px] max-w-[340px] flex flex-col justify-center items-center gap-6 flex-1 shadow-glow rounded-xl relative  py-14 px-6 overflow-hidden bg-gradient-to-tr from-light-purple to-light-peach"
-                                >
-                                    <div className='absolute inset-0  w-full h-full flex justify-center items-center z-10'>
-                                        <img src={logo} alt="Logo" width={70} className="mix-blend-soft-light" />
-                                    </div>
+        <section ref={sectionRef} id="start" className="relative h-full py-[5rem] md:py-[10rem] bg-blue bg-opacity-10">
+            <div className='max-w-container'>
+                <div>
+                    <Tag text="Steps" />
+                    <h2 className="mt-2">Transform Your Finances <br /> in 3 Easy Steps</h2>
+                </div>
 
-                                    <div className="h-14 w-14 border border-white bg-nude-white flex justify-center items-center rounded-full shadow-custom z-0 opacity-0">
-                                        <span className="font-awaken text-2xl leading-none">{item.id}</span>
-                                    </div>
-                                    <div className="text-center pt-4 z-0 opacity-0">
-                                        <h4 className="uppercase font-medium tracking-wider">{item.title}</h4>
-                                        <p className="mt-4 text-gray-700">{item.content}</p>
-                                    </div>
-                                </div>
-
-                                {/* Back Side */}
-                                <div
-                                    className=" min-h-[350px] max-w-[340px] flex flex-col justify-center items-center gap-6 flex-1 shadow-glow rounded-xl py-14 px-6 cursor-pointer"
-                                    onMouseEnter={(e) => {
-                                        const boundingBox = e.currentTarget.getBoundingClientRect();
-                                        const x = e.clientX - boundingBox.left;
-                                        const y = e.clientY - boundingBox.top;
-                                        const xPercentage = x / boundingBox.width;
-                                        const yPercentage = y / boundingBox.height;
-                                        const xRotation = (yPercentage - 0.5) * 20;
-                                        const yRotation = (xPercentage - 0.5) * 20;
-
-                                        e.currentTarget.style.setProperty('--x-rotation', `${xRotation}deg`);
-                                        e.currentTarget.style.setProperty('--y-rotation', `${yRotation}deg`);
-                                        e.currentTarget.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-                                    }}
-                                    onMouseMove={(e) => {
-                                        const boundingBox = e.currentTarget.getBoundingClientRect();
-                                        const x = e.clientX - boundingBox.left;
-                                        const y = e.clientY - boundingBox.top;
-                                        const xPercentage = x / boundingBox.width;
-                                        const yPercentage = y / boundingBox.height;
-                                        const xRotation = (yPercentage - 0.5) * 20;
-                                        const yRotation = (0.5 - xPercentage) * 20;
-
-                                        e.currentTarget.style.setProperty('--x-rotation', `${xRotation}deg`);
-                                        e.currentTarget.style.setProperty('--y-rotation', `${yRotation}deg`);
-                                        e.currentTarget.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-                                    }}
-                                >
-                                    <div className="h-14 w-14 border border-white bg-nude-white flex justify-center items-center rounded-full shadow-custom">
-                                        <span className="font-awaken text-2xl leading-none">{item.id}</span>
-                                    </div>
-                                    <div className="text-center mt-4">
-                                        <h4 className="uppercase font-medium tracking-wider">{item.title}</h4>
-                                        <p className="mt-4 text-gray-700">{item.content}</p>
-                                    </div>
-                                </div>
-                            </ReactCardFlip>
-                        ))}
+                <div className='flex flex-col items-center justify-between w-full gap-8 mt-10 md:flex-row'>
+                    <div className='shadow-inner border p-10 rounded-xl bg-opacity-20 flex-1'>
+                        <h1 className='text-gray-500'>1. </h1>
+                        <h4 className='font-medium'> Open a CoreVault account </h4>
+                        <p className='mt-2'>Sign up in minutes and gain access to personalized financial solutions tailored to your needs.</p>
+                    </div>
+                    <div className='shadow-inner border  p-10 rounded-xl bg-opacity-50 flex-1'>
+                        <h1 className='text-gray-500'>2. </h1>
+                        <h4 className='font-medium'> Link your accounts </h4>
+                        <p className='mt-2'>Simplify expense tracking, payment management, and transfers with a few clicks.</p>
+                    </div>
+                    <div className='shadow-inner border  p-10 rounded-xl bg-opacity-50 flex-1'>
+                        <h1 className='text-gray-500'>3.</h1>
+                        <h4 className='font-medium'> Open your account </h4>
+                        <p className='mt-2'>Sign up in minutes and gain access to personalized financial solutions tailored to your needs.</p>
                     </div>
                 </div>
+                {/* 
                 <div className="flex justify-center">
                     <PrimaryBtn text="Get Started Today" />
-                </div>
+                </div> */}
             </div>
         </section>
     );
 }
+
+
+
+// <div className="my-20">
+// <div className="flex flex-col items-center justify-center w-full gap-8 md:flex-row md:flex-wrap md:gap-12 lg:gap-20">
+//     {benefits.map((item, index) => (
+//         <ReactCardFlip
+//             key={item.id}
+//             isFlipped={flip[index]}
+//             flipDirection="horizontal"
+//             containerClassName="[perspective:800px]"
+//         >
+//             {/* Front Side */}
+//             <div
+//                 ref={(el) => (cardRefs.current[index] = el)}
+//                 className="group min-h-[350px] max-w-[340px] flex flex-col justify-center items-center gap-6 flex-1 shadow-glow rounded-xl relative  py-14 px-6 overflow-hidden bg-charcoal"
+//             >
+//                 <div className='absolute inset-0  w-full h-full flex justify-center items-center z-10'>
+//                     <img src={logo} alt="Logo" width={70} className="mix-blend-overlay" />
+//                 </div>
+
+//                 <div className="h-14 w-14 border border-white bg-nude-white flex justify-center items-center rounded-full shadow-custom z-0 opacity-0">
+//                     <span className="font-awaken text-2xl leading-none">{item.id}</span>
+//                 </div>
+//                 <div className="text-center pt-4 z-0 opacity-0">
+//                     <h4 className="uppercase font-medium tracking-wider">{item.title}</h4>
+//                     <p className="mt-4 text-gray-700">{item.content}</p>
+//                 </div>
+//             </div>
+
+//             {/* Back Side */}
+//             <div
+//                 className=" min-h-[350px] max-w-[340px] flex flex-col justify-center items-center gap-6 flex-1 shadow-custom rounded-xl py-14 px-6 cursor-pointer"
+//                 onMouseEnter={(e) => {
+//                     const boundingBox = e.currentTarget.getBoundingClientRect();
+//                     const x = e.clientX - boundingBox.left;
+//                     const y = e.clientY - boundingBox.top;
+//                     const xPercentage = x / boundingBox.width;
+//                     const yPercentage = y / boundingBox.height;
+//                     const xRotation = (yPercentage - 0.5) * 20;
+//                     const yRotation = (xPercentage - 0.5) * 20;
+
+//                     e.currentTarget.style.setProperty('--x-rotation', `${xRotation}deg`);
+//                     e.currentTarget.style.setProperty('--y-rotation', `${yRotation}deg`);
+//                     e.currentTarget.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+//                 }}
+//                 onMouseMove={(e) => {
+//                     const boundingBox = e.currentTarget.getBoundingClientRect();
+//                     const x = e.clientX - boundingBox.left;
+//                     const y = e.clientY - boundingBox.top;
+//                     const xPercentage = x / boundingBox.width;
+//                     const yPercentage = y / boundingBox.height;
+//                     const xRotation = (yPercentage - 0.5) * 20;
+//                     const yRotation = (0.5 - xPercentage) * 20;
+
+//                     e.currentTarget.style.setProperty('--x-rotation', `${xRotation}deg`);
+//                     e.currentTarget.style.setProperty('--y-rotation', `${yRotation}deg`);
+//                     e.currentTarget.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+//                 }}
+//                 onMouseLeave={(e) => {
+//                     e.currentTarget.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+//                 }}
+//             >
+//                 <div className="h-14 w-14 border border-white bg-nude-white flex justify-center items-center rounded-full shadow-custom">
+//                     <span className="font-awaken text-2xl leading-none">{item.id}</span>
+//                 </div>
+//                 <div className="text-center mt-4">
+//                     <h4 className="uppercase font-bold tracking-wider">{item.title}</h4>
+//                     <p className="mt-4 text-gray-700">{item.content}</p>
+//                 </div>
+//             </div>
+//         </ReactCardFlip>
+//     ))}
+// </div>
+// </div>

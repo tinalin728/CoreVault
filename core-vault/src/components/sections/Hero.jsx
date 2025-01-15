@@ -125,7 +125,7 @@ export default function Hero({ setIsNavDark }) {
 
     return (
         <>
-            <div ref={heroRef} className='p-6 md:p-8 h-screen'>
+            <div ref={heroRef} className='p-4 md:p-8 h-screen'>
                 <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col shadow-custom'>
                     <section className='max-w-container h-full flex justify-between items-center mt-20'>
                         <div className='md:basis-2/3'>
@@ -148,8 +148,8 @@ export default function Hero({ setIsNavDark }) {
                             </div>
                         </div>
                         <div className='md:basis-[35%] hidden md:block'>
-                            <Lottie animationData={heroAnimation} style={{ width: '100%', opacity: '50%', objectFit: 'cover', zIndex: '1' }} />
-                            <Lottie animationData={expense} style={{ width: '100%', opacity: '50%', objectFit: 'cover', marginTop: '-40px', zIndex: '1' }} />
+                            <Lottie animationData={heroAnimation} style={{ width: '100%', mixBlendMode: 'overlay' }} />
+                            <Lottie animationData={expense} style={{ width: '100%', marginTop: '-20px', mixBlendMode: 'overlay' }} />
 
                         </div>
                     </section>

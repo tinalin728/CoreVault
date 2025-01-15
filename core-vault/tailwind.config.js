@@ -23,14 +23,16 @@ module.exports = withMT({
         awaken: ['awaken', 'sans-serif'],
       },
       colors: {
-        purple: '#A88BFA',
+        blue: '#8284B7',
         'nude-red': '#D58D8D',
-        'nude-white': '#FAF6F8',
-        'darker-white': '#f3e9ee',
+        'nude-white': '#f5f5f5',
+        'darker-white': '#E1DCD0',
         'light-peach': '#FFDFDF',
         'light-purple': '#E2D8FF',
-        'bright-purple': '#EE51FF',
+        'accent': '#32302f',
+        'text-gray': '#505457'
       },
+
       boxShadow: {
         'custom': '0 2px 10px rgba(0, 0, 0, 0.1)',
         'glow': '0 0px 10px rgba(238, 81, 255, 0.25)',
@@ -44,6 +46,10 @@ module.exports = withMT({
       },
       ringColor: {
         'white/15': 'rgba(255, 255, 255, 0.15)',
+      },
+
+      backgroundImage: {
+        'gradient-to-r': 'linear-gradient(to right, #f5f5f5, #eeeeee)',
       },
     },
   },

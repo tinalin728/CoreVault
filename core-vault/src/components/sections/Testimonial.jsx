@@ -8,7 +8,7 @@ export default function Testimonial() {
     const Container = ({ content, name, company }) => {
         return (
             <div className='bg-white w-fit p-10 mr-10 rounded-xl'>
-                <h4 className='w-[20rem] mb-10'>{content}</h4>
+                <p className='w-[20rem] text-xl mb-10'>{content}</p>
                 <p className='text-gray-500'> - {name}</p>
                 <p className='font-medium italic'>{company}</p>
             </div>
@@ -17,15 +17,16 @@ export default function Testimonial() {
     }
 
     return (
-        <section id='testimonial' className='py-[8rem]'>
-            <div className='py-[8rem] bg-darker-white'>
+        <section id='testimonial' className='py-[5rem] md:py-[10rem]'>
+            <div className=''>
                 <div className='max-w-container'>
                     <Tag
                         text='Testimonials'
+                        classes='mx-auto'
                     />
                     <h2 className='text-center mt-4'>What Our Clients Are Saying</h2>
                     <Marquee
-                        pauseOnHover pauseOnClick gradient gradientColor='#f3e9ee' className='mt-10'>
+                        pauseOnHover pauseOnClick gradient gradientColor='#f5f5f5' className='mt-10'>
                         <Container
                             content='"CoreVault has helped me stay on top of my finances effortlessly. I love how the AI insights give me personalized tips, making it so much easier to save for my goals."'
                             name='Emily'

@@ -20,67 +20,55 @@ export default function Navbar({ isDark }) {
 
     const toggleMenu = () => {
         SetIsOpen((prev) => !prev);
-        console.log('istoggled')
+        //console.log('istoggled')
     }
 
-
     useGSAP(() => {
-        const animation = gsap.timeline();
-        animation.to(textRef.current, {
-            y: -10,
+        gsap.set(navRef.current, {
+            height: 0,
             opacity: 0,
-            duration: .5,
-            ease: 'power2.out',
         });
 
-        animation.set(textRef.current, {
-            y: 10,
-            opacity: 0,
-            // innerText: isOpen ? 'Close' : 'More'
-        });
-        animation.to(textRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: .3,
-            ease: 'power2.out',
+        gsap.set(buttonRef.current, {
+            borderRadius: '9999px'
         })
-    }, [isOpen])
+    }, []);
 
     useEffect(() => {
         if (isOpen) {
+            // Animate to open state
             gsap.to(buttonRef.current, {
-                borderRadius: "1rem 1rem 0 0", // Matches `rounded-t-lg`
+                borderRadius: "1rem 1rem 0 0",
                 duration: 0.5,
                 ease: "power2.out",
             });
 
-            // Animate the background and menu items
-            gsap.fromTo(
-                navRef.current,
-                { height: 0, opacity: 0 },
-                { height: "auto", opacity: 1, duration: 0.8, ease: "power2.out" }
-            );
+            gsap.to(navRef.current, {
+                height: "auto",
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+            });
 
             gsap.fromTo(
-                menuRef.current.children, // Target menu items
+                menuRef.current.children,
                 { opacity: 0, y: -40 },
                 { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }
             );
         } else {
-            // Reverse animation for closing
+            // Animate to closed state
             gsap.to(navRef.current, {
                 height: 0,
                 opacity: 0,
-                duration: 0.3,
+                duration: 0.5,
                 ease: "power2.in",
             });
-            {
-                gsap.to(buttonRef.current, {
-                    borderRadius: "9999px", // Matches `rounded-full`
-                    duration: 0.5,
-                    ease: "power2.in",
-                });
-            }
+
+            gsap.to(buttonRef.current, {
+                borderRadius: "9999px",
+                duration: 0.5,
+                ease: "power2.in",
+            });
         }
     }, [isOpen]);
 
@@ -114,33 +102,35 @@ export default function Navbar({ isDark }) {
                         <div
                             ref={buttonRef}
                             onClick={toggleMenu}
-                            className={`cursor-pointer flex items-center justify-center gap-2 bg-opacity-40 backdrop-blur-sm px-4 py-2 relative transition ease duration-500  ${isDark ? 'bg-black' : 'bg-white'}`}
+                            className={`cursor-pointer flex items-center justify-center gap-2 bg-opacity-30 backdrop-blur-sm px-4 py-2 relative transition ease duration-500 overflow-hidden border-2 border-white border-opacity-30 ${isDark ? 'bg-black text-white' : 'bg-white text-white'}`}
                         >
 
-                            <span ref={textRef} className="text-md md:text-lg lg:text-xl uppercase font-medium tracking-wider text-white z-[1000] leading-normal">
-                                {isOpen ? 'Close' : 'More'}
+                            <span ref={textRef} className="text-md md:text-lg lg:text-xl uppercase font-medium tracking-wider z-[1000] leading-normal">
+                                {isOpen ? 'Close' : 'Open'}
                             </span>
-                            <AddOutline height="23px" width="23px" color='white' className={`transition-transform duration-500 ease-in-out transform mb-1 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                            <AddOutline height="23px" width="23px"
+                                style={{
+                                    color: isDark ? 'white' : 'white',
+                                    transition: 'color 0.5s ease, transform 0.5s ease',
+                                }}
+                                className={`transition-transform duration-500 ease-in-out transform ${isOpen ? 'rotate-45' : 'rotate-0'}`}
                             />
                         </div>
 
 
-                        <nav ref={navRef} className={`bg-white bg-opacity-20 backdrop-blur-sm shadow-md absolute top-full right-0 w-full rounded-b-lg z-[1000] overflow-hidden`} >
+                        <nav ref={navRef} className={`bg-white bg-opacity-20 backdrop-blur-sm shadow-md absolute top-full right-0 w-full rounded-b-2xl z-[1000] overflow-hidden`} >
                             <ul ref={menuRef} className='flex flex-col cursor-pointer z-[1000]'>
                                 <li onClick={toggleMenu} className='py-4 hover:bg-nude-white transition duration-300 text-center'>
                                     <a href="#feature">Features</a>
-                                </li>
-                                <li onClick={toggleMenu} className='text-center py-4 hover:bg-nude-white transition duration-300'>
-                                    <a href="#why">Why Us?</a>
-                                </li>
-                                <li onClick={toggleMenu} className='text-center py-4 hover:bg-nude-white transition duration-300'>
-                                    <a href="#start">Get Started</a>
                                 </li>
                                 <li onClick={toggleMenu} className='text-center py-4 hover:bg-nude-white transition duration-300'>
                                     <a href="#testimonial">Testimonials</a>
                                 </li>
                                 <li onClick={toggleMenu} className='text-center py-4 hover:bg-nude-white transition duration-300'>
                                     <a href="#faq">FAQs</a>
+                                </li>
+                                <li onClick={toggleMenu} className='text-center py-4 hover:bg-nude-white transition duration-300'>
+                                    <a href="#contact">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>

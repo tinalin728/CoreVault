@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-nude-white font-roboto font-light
+    @apply font-roboto font-light bg-nude-white
   }
 
   .max-w-container {
@@ -27,7 +27,7 @@
   }
 
   h2 {
-    @apply font-awaken text-3xl leading-normal md:text-4xl
+    @apply font-awaken text-3xl md:text-4xl leading-normal lg:text-5xl
   }
 
   h3 {
@@ -35,11 +35,11 @@
   }
 
   h4 {
-    @apply text-xl
+    @apply text-xl lg:text-2xl
   }
 
   p {
-    @apply text-base md:text-lg
+    @apply text-base md:text-lg text-text-gray
   }
 
   a {
@@ -47,16 +47,27 @@
   }
 
   .hero {
-    width: 250px;
+    /* width: 250px;
     height: 250px;
     filter: contrast(170%) brightness(100%);
     background:
       linear-gradient(75deg, rgba(168, 139, 250, 1), rgba(255, 255, 255, 0.12)),
       radial-gradient(circle at 106% 17%, rgba(213, 141, 141, 1), rgba(0, 0, 0, 0.29)),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 297 297' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.81' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 297 297' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.81' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); */
 
-    background-blend-mode: overlay, multiply;
-    background-size: 200% 200%, 150% 150%, auto;
+    width: 100%;
+    height: 100%;
+    filter: contrast(100%) brightness(100%);
+    background:
+      radial-gradient(circle at 21% 150%, rgba(50, 77, 144, 1), rgba(0, 0, 255, 0)),
+      radial-gradient(circle at 127% 3%, rgba(219, 198, 255, 1), rgba(255, 0, 0, 0)),
+      radial-gradient(circle at 85% 0%, rgba(216, 216, 216, 1), rgba(251, 251, 251, 0)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 293 293' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='6.11' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
+
+
+    background-blend-mode: multiply, multiply;
+    /* background-size: 300% 300%, 250% 250%, auto; */
     /* Ensure gradients have enough space to move */
     animation: radialMotion 8s infinite ease-in-out;
   }

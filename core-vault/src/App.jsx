@@ -8,7 +8,7 @@ import Footer from "./components/sections/Footer"
 import Stats from "./components/sections/Stats"
 import Navbar from "./components/sections/Navbar"
 import Why from "./components/sections/Why"
-
+import Contact from './components/sections/Contact'
 function App() {
 
   const [isNavDark, setIsNavDark] = useState(false)
@@ -21,6 +21,7 @@ function App() {
       <How />
       <Testimonial />
       <Faq />
+      <Contact />
       <Footer />
     </>
   )
