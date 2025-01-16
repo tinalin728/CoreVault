@@ -15,13 +15,12 @@ gsap.registerPlugin(ScrollTrigger);
 import { MailOutline, CallOutline } from 'react-ionicons'
 import faq from '../../../public/images/faq.png'
 
-
-
 import {
     Accordion,
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
+import { Margin } from '@mui/icons-material';
 
 function Icon({ id, open }) {
     return (
@@ -53,18 +52,24 @@ export default function Faq() {
 
     return (
         <>
-            <section id='faq' className=' py-[5rem] md:py-[10rem] h-full' ref={sectionRef}>
-                <div className='max-w-container flex flex-col gap-2 mt-10 md:flex-row lg:gap-10 items-stretch'>
-                    <div className='flex-1 '>
-                        <div className='mb-10'>
-                            <Tag
-                                text="FAQs"
-                            />
-                            <h2 className='mt-4'>You Might Also Wonder...</h2>
-                        </div>
+            <section id='faq' className=' py-[10rem] h-full' ref={sectionRef}>
+                <div className='max-w-container'>
+                    <div className='text-center'>
+                        <Tag
+                            text="FAQs"
+                            classes='mx-auto'
+                        />
+                        <h2 className='mt-2'>You Might Also Wonder...</h2>
+                    </div>
+                    <div className='mt-10 flex flex-col gap-2 md:flex-row lg:gap-10 items-stretch'>
                         <Box sx={{ width: '100%', typography: 'body1', flex: '1 1 0%' }}>
                             <TabContext value={value}>
-                                <Box>
+                                <Box sx={{
+                                    width: '100%',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignContent: 'center',
+                                }}>
                                     <TabList onChange={handleChange} aria-label="FAQs"
                                         sx={{
                                             borderRadius: '50px',
@@ -113,27 +118,32 @@ export default function Faq() {
                                         ))}
                                     </TabList>
                                 </Box>
-                                {faqData.map((category, index) => (
-                                    <TabPanel key={index} value={`${index}`}>
-                                        {category.questions.map((faq) => (
-                                            <Accordion
-                                                key={faq.id}
-                                                open={open === faq.id}
-                                                icon={<Icon id={faq.id} open={open} />}
-                                            >
-                                                <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto text-black'>
-                                                    {faq.question}
-                                                </AccordionHeader>
-                                                <AccordionBody className='font-roboto font-normal text-lg'>{faq.answer}</AccordionBody>
-                                            </Accordion>
+                                <div className='flex gap-10 mt-8'>
+                                    <div className='flex-1 pl-2'>
+                                        {faqData.map((category, index) => (
+                                            <TabPanel key={index} value={`${index}`}>
+                                                {category.questions.map((faq) => (
+                                                    <Accordion
+                                                        key={faq.id}
+                                                        open={open === faq.id}
+                                                        icon={<Icon id={faq.id} open={open} />}
+                                                    >
+                                                        <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto text-black'>
+                                                            {faq.question}
+                                                        </AccordionHeader>
+                                                        <AccordionBody className='font-roboto font-normal text-lg'>{faq.answer}</AccordionBody>
+                                                    </Accordion>
+                                                ))}
+                                            </TabPanel>
                                         ))}
-                                    </TabPanel>
-                                ))}
+                                    </div>
+                                    <div className='flex-1 h-full bg-white rounded-xl shadow-custom bg-opacity-30'>
+                                        <img src={faq} alt="" className='object-contain min-h-[400px]' />
+                                    </div>
+                                </div>
                             </TabContext>
                         </Box>
-                    </div>
-                    <div className='flex-1 h-full bg-white rounded-xl bg-opacity-30'>
-                        <img src={faq} alt="" className='object-contain min-h-[600px]' />
+
                     </div>
                 </div>
             </section >
