@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, forwardRef } from 'react'
 import PrimaryBtn from '../PrimaryBtn';
 import SecondaryBtn from '../SecondaryBtn';
 import Lottie from "lottie-react";
@@ -11,9 +11,8 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function Hero({ setIsNavDark }) {
+export default function Hero({ setIsNavDark, heroRef }) {
     const [isOpen, SetIsOpen] = useState(false);
-    const heroRef = useRef(null);
     const heroInner = useRef(null)
     const textRef = useRef(null)
     const navRef = useRef(null)
@@ -63,7 +62,7 @@ export default function Hero({ setIsNavDark }) {
         animation.set(textRef.current, {
             y: 10,
             opacity: 0,
-            // innerText: isOpen ? 'Close' : 'More'
+            innerText: isOpen ? 'Close' : 'More'
         });
         animation.to(textRef.current, {
             y: 0,
@@ -76,12 +75,12 @@ export default function Hero({ setIsNavDark }) {
     useEffect(() => {
         if (isOpen) {
             gsap.to(buttonRef.current, {
-                borderRadius: "1rem 1rem 0 0", // Matches `rounded-t-lg`
+                borderRadius: "1rem 1rem 0 0",
                 duration: 0.5,
                 ease: "power2.out",
             });
 
-            // Animate the background and menu items
+
             gsap.fromTo(
                 navRef.current,
                 { height: 0, opacity: 0 },
@@ -89,7 +88,7 @@ export default function Hero({ setIsNavDark }) {
             );
 
             gsap.fromTo(
-                menuRef.current.children, // Target menu items
+                menuRef.current.children,
                 { opacity: 0, y: -40 },
                 { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }
             );
@@ -103,7 +102,7 @@ export default function Hero({ setIsNavDark }) {
             });
             {
                 gsap.to(buttonRef.current, {
-                    borderRadius: "9999px", // Matches `rounded-full`
+                    borderRadius: "9999px",
                     duration: 0.5,
                     ease: "power2.in",
                 });
@@ -127,7 +126,8 @@ export default function Hero({ setIsNavDark }) {
         <>
             <div ref={heroRef} className='p-4 md:p-8 h-screen'>
                 <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col shadow-custom'>
-                    <section className='max-w-container h-full flex justify-between items-center mt-20'>
+                    <section className='max-w-container h-full flex justify-between items-center mt-20 relative'>
+                        <div className='g1 absolute radial-gradient z-10'></div>
                         <div className='md:basis-2/3'>
                             <div className=''>
                                 <h1 className='text-white'>
@@ -148,8 +148,8 @@ export default function Hero({ setIsNavDark }) {
                             </div>
                         </div>
                         <div className='md:basis-[35%] hidden md:block'>
-                            <Lottie animationData={heroAnimation} style={{ width: '100%', mixBlendMode: 'overlay' }} />
-                            <Lottie animationData={expense} style={{ width: '100%', marginTop: '-20px', mixBlendMode: 'overlay' }} />
+                            <Lottie animationData={heroAnimation} style={{ width: '100%', mixBlendMode: 'lighten', opacity: '70%' }} />
+                            <Lottie animationData={expense} style={{ width: '100%', marginTop: '-20px', mixBlendMode: 'lighten', opacity: '70%' }} />
 
                         </div>
                     </section>

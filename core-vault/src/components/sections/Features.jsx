@@ -97,7 +97,7 @@ export default function Features() {
 
     return (
         <>
-            <section id='feature' className='h-full pb-[5rem] md:pb-[10rem]'>
+            <section id='feature' className='h-full  py-[5rem] md:py-[10rem]'>
                 <Tag text='Core features' classes='mx-auto' />
 
                 <div className="text-center mt-2 max-w-container">
@@ -112,7 +112,7 @@ export default function Features() {
                     ref={containerRef}
                     className="max-w-container grid lg:grid-cols-12 gap-10 mt-10"
                 >
-                    <div className="w-full bg-blue bg-opacity-10 rounded-xl shadow-custom min-h-[400px] h-full lg:col-span-6">
+                    <div className="w-full bg-blue bg-opacity-10 rounded-3xl shadow-custom min-h-[400px] h-full lg:col-span-6">
                         <div className='flex flex-col justify-center items-center h-full px-10 py-20'>
                             <div ref={bankContainerRef} className='flex justify-center items-center relative w-full min-h-[15rem] h-full -mt-8'>
                                 <img src={bank} alt="" className='absolute bank max-w-[120px] md:max-w-[150px]' />
@@ -125,7 +125,7 @@ export default function Features() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full bg-blue bg-opacity-10 shadow-custom rounded-xl min-h-[400px] h-full lg:col-span-6 relative overflow-hidden">
+                    <div className="w-full bg-blue bg-opacity-10 shadow-custom rounded-3xl min-h-[400px] h-full lg:col-span-6 relative overflow-hidden">
                         <div className='flex flex-col justify-center items-center gap-10 h-full px-10 py-16 relative z-10'>
                             <div className='payment-container flex justify-center items-center h-full relative z-10'>
                                 <img src={phone} alt="" width={100} className='phone relative z-10' />
@@ -141,7 +141,7 @@ export default function Features() {
                         </div>
                     </div>
 
-                    <div className="w-full bg-blue bg-opacity-10 shadow-custom min-h-[400px] lg:col-span-8 h-full">
+                    <div className="w-full bg-blue bg-opacity-10 shadow-custom min-h-[400px] rounded-3xl lg:col-span-8 h-full">
                         <div className='flex flex-col-reverse justify-center items-center h-full p-10 lg:flex-row lg:justify-end'>
                             <div className='flex-1 text-center lg:text-left'>
                                 <h4 className='font-medium'>AI-powered insights</h4>
@@ -161,7 +161,7 @@ export default function Features() {
                         </div>
                     </div>
 
-                    <div className="w-full bg-blue bg-opacity-10 shadow-custom min-h-[400px] lg:col-span-4">
+                    <div className="w-full bg-blue bg-opacity-10 shadow-custom min-h-[400px] rounded-3xl lg:col-span-4">
                         <div className='flex flex-col justify-center items-center gap-4 h-full p-10'>
                             <div className='flex justify-center items-center'>
                                 <Lottie

@@ -17,6 +17,15 @@ const faqData = [
         question: "Does CoreVault have a mobile app?",
         answer: "Yes, CoreVault offers a user-friendly mobile app available for both iOS and Android, allowing you to manage your finances on the go.",
       },
+      {
+        id: 4,
+        question: "How to contact us?",
+        answer: `
+      You can contact CoreVault through our 24/7 customer support via email at
+      <a href="mailto:support@corevault.com" class="text-blue font-bold underline">
+        support@corevault.com</a> or by calling our helpline at  <span class='font-bold text-black'>1-800-COREVAULT </span>. Additionally, you can reach us through the 'Contact Us' section in our mobile app, available for both iOS and Android.
+    `,
+      },
     ],
   },
   {

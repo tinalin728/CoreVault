@@ -37,7 +37,7 @@ module.exports = withMT({
         'custom': '0 2px 10px rgba(0, 0, 0, 0.1)',
         'glow': '0 0px 10px rgba(238, 81, 255, 0.25)',
         'tag': 'inset 4px 3px 8px rgba(0, 0, 0, 0.15)',
-        'inner': 'inset 4px 3px 8px rgba(0, 0, 0, 0.15), inset -2px -2px 2px rgba(251,248,249,0.8)',
+        'inner': 'inset 3px 3px 5px rgba(0 0 0 0.75)',
         'icon': 'inset 4px 4px 8px rgba(0, 0, 0, 0.25)',
         'inset-2xs': 'inset 0 1px rgb(0 0 0 / 0.05)',
         'inset-xs': 'inset 0 1px 1px rgb(0 0 0 / 0.05)',
@@ -49,7 +49,11 @@ module.exports = withMT({
       },
 
       backgroundImage: {
-        'gradient-to-r': 'linear-gradient(to right, #f5f5f5, #eeeeee)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      boxShadow: {
+        custom: '3px 3px 2px rgba(0, 0, 0, 0.1), inset 2px 3px 4px rgba(255, 255, 255, 0.3)',
+        hoverCustom: 'inset 2px 2px 5px rgba(0, 0, 0, 0.1)',
       },
     },
   },

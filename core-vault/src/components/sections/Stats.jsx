@@ -29,18 +29,19 @@ export default function Stats() {
                 gsap.fromTo(
                     item,
                     {
-                        y: 30, // Move down 30px initially
-                        scale: 0.95, // Start with a slightly smaller scale
+                        y: 30,
+                        scale: 0.95,
                     },
                     {
-                        y: 0, // Move to original position
-                        scale: 1, // Scale to original size
+                        y: 0,
+                        scale: 1,
                         duration: 1,
                         ease: 'power2.out',
                         scrollTrigger: {
                             trigger: item,
                             start: 'top 80%',
                             end: 'top 60%',
+                            scrub: true,
                             toggleActions: 'play complete none reverse',
                             onEnter: () => setAnimateCount(true),
                             onLeaveBack: () => setAnimateCount(false),
@@ -57,13 +58,13 @@ export default function Stats() {
 
 
     return (
-        <section ref={statsRef} className="max-w-container py-[5rem] md:py-[10rem]">
+        <section ref={statsRef} className="max-w-container pt-[5rem] md:pt-[10rem]">
             <div ref={boxRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6 ">
                 {statsData.map((item, index) => (
                     <div
                         key={index}
                         ref={(el) => (itemsRef.current[index] = el)}
-                        className="py-16 rounded-xl flex flex-col justify-center items-center border text-center shadow-inner">
+                        className="py-16 rounded-3xl flex flex-col justify-center items-center border text-center  shadow-inner bg-nude-white">
                         <h3 className="font-awaken">
                             {animateCount && <CountUp start={1} end={item.end} duration={3} suffix={item.suffix} />}
                         </h3>

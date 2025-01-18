@@ -52,8 +52,8 @@ export default function Faq() {
 
     return (
         <>
-            <section id='faq' className=' py-[10rem] h-full' ref={sectionRef}>
-                <div className='max-w-container'>
+            <section id='faq' className='max-w-container' ref={sectionRef}>
+                <div className=' py-[10rem] border-t border-accent border-opacity-10 border-dashed'>
                     <div className='text-center'>
                         <Tag
                             text="FAQs"
@@ -118,7 +118,7 @@ export default function Faq() {
                                         ))}
                                     </TabList>
                                 </Box>
-                                <div className='flex gap-10 mt-8'>
+                                <div className='flex gap-10 '>
                                     <div className='flex-1 pl-2'>
                                         {faqData.map((category, index) => (
                                             <TabPanel key={index} value={`${index}`}>
@@ -127,19 +127,23 @@ export default function Faq() {
                                                         key={faq.id}
                                                         open={open === faq.id}
                                                         icon={<Icon id={faq.id} open={open} />}
+                                                        className='py-4 border rounded-xl shadow-custom px-6 my-2'
                                                     >
-                                                        <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto text-black'>
+                                                        <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto text-black border-0'>
                                                             {faq.question}
                                                         </AccordionHeader>
-                                                        <AccordionBody className='font-roboto font-normal text-lg'>{faq.answer}</AccordionBody>
+                                                        <AccordionBody
+                                                            className="font-roboto font-normal text-lg"
+                                                            dangerouslySetInnerHTML={{ __html: faq.answer }}
+                                                        />
                                                     </Accordion>
                                                 ))}
                                             </TabPanel>
                                         ))}
                                     </div>
-                                    <div className='flex-1 h-full bg-white rounded-xl shadow-custom bg-opacity-30'>
+                                    {/* <div className='flex-1 h-full bg-white rounded-xl shadow-custom bg-opacity-30'>
                                         <img src={faq} alt="" className='object-contain min-h-[400px]' />
-                                    </div>
+                                    </div> */}
                                 </div>
                             </TabContext>
                         </Box>
