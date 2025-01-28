@@ -17,11 +17,12 @@ jobs:
         run: |
           npm install
           npm run build
+          working-directory: ./core-vault
       - name: 📁 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "dist/"
+          local-dir: "core-vault/dist/"
           server-dir: "corevault.tinalin.ca/"
