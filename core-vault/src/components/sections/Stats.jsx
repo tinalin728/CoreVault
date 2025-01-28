@@ -59,12 +59,13 @@ export default function Stats() {
 
     return (
         <section ref={statsRef} className="max-w-container pt-[5rem] md:pt-[10rem]">
-            <div ref={boxRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6 ">
+            <div ref={boxRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {statsData.map((item, index) => (
                     <div
                         key={index}
                         ref={(el) => (itemsRef.current[index] = el)}
-                        className="py-16 rounded-3xl flex flex-col justify-center items-center border text-center  shadow-inner bg-nude-white">
+                        style={{ boxShadow: 'inset 3px 3px 8px rgba(0, 0, 0, 0.1), inset -5px -5px 2px rgba(233, 233, 233, 0.01)' }}
+                        className="py-16 rounded-3xl flex flex-col justify-center items-center border-2 text-center border-nude-white bg-light-blue bg-opacity-10">
                         <h3 className="font-awaken">
                             {animateCount && <CountUp start={1} end={item.end} duration={3} suffix={item.suffix} />}
                         </h3>

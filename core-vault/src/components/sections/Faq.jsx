@@ -38,6 +38,7 @@ function Icon({ id, open }) {
 }
 export default function Faq() {
     const sectionRef = useRef(null); // Reference to the section
+    const faqRefs = useRef([]);
 
     const [value, setValue] = useState('0');
     const handleChange = (event, newValue) => {
@@ -48,12 +49,35 @@ export default function Faq() {
 
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+    useGSAP(() => {
+        if (faqRefs.current.length === 0) return;
+
+        faqRefs.current.forEach((el, index) => {
+            gsap.fromTo(
+                el,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 80%',
+                        end: 'bottom top',
+                        toggleActions: 'play none none reverse',
+                    },
+                }
+            );
+        });
+    }, []);
+
 
 
     return (
         <>
-            <section id='faq' className='max-w-container' ref={sectionRef}>
-                <div className=' py-[10rem] border-t border-accent border-opacity-10 border-dashed'>
+            <section id='faq' className='h-full bg-gradient-to-t from-nude-white to-light-blue' ref={sectionRef}>
+                <div className='max-w-container  py-[10rem] border-t border-accent border-opacity-10 border-dashed'>
                     <div className='text-center'>
                         <Tag
                             text="FAQs"
@@ -80,21 +104,20 @@ export default function Faq() {
                                                 borderColor: 'black',
                                                 borderWidth: '1px',
                                                 paddingX: '25px',
-                                                color: '#000000',
-                                                backgroundColor: '#f5f5f5',
+                                                color: '#505457',
                                                 fontSize: '18px',
                                                 fontFamily: 'roboto',
                                                 fontWeight: 'bold',
                                                 transition: 'all 0.3s ease',
                                                 marginRight: '20px',
+                                                backgroundColor: '#f5f5f5',
                                                 boxShadow: '3px 3px 2px rgba(0,0,0,0.1),inset 2px 3px 4px rgba(255,255,255,0.5)',
                                                 overflow: 'visible',
                                                 transitionProperty: 'all',
                                                 transitionDuration: '500ms'
                                             },
                                             '& .Mui-selected': {
-                                                //backgroundColor: '#f3e9ee',
-                                                color: '#555 !important',
+                                                color: '#000000 !important',
                                                 border: '#f3e9ee',
                                                 borderWidth: '2px',
                                                 boxShadow: 'inset 3px 3px 6px rgba(0,0,0,0.1), inset -3px -3px 3px rgba(243,233,238,0.5)'
@@ -121,15 +144,20 @@ export default function Faq() {
                                 <div className='flex gap-10 '>
                                     <div className='flex-1 pl-2'>
                                         {faqData.map((category, index) => (
-                                            <TabPanel key={index} value={`${index}`}>
+                                            <TabPanel
+                                                key={index} value={`${index}`}>
                                                 {category.questions.map((faq) => (
                                                     <Accordion
+                                                        ref={(el) => {
+                                                            if (el && !faqRefs.current.includes(el)) {
+                                                                faqRefs.current.push(el);
+                                                            }
+                                                        }}
                                                         key={faq.id}
                                                         open={open === faq.id}
                                                         icon={<Icon id={faq.id} open={open} />}
-                                                        className='py-4 border rounded-xl shadow-custom px-6 my-2'
-                                                    >
-                                                        <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto text-black border-0'>
+                                                        className='py-4 border rounded-xl shadow-faq px-6 my-4 bg-nude-white' >
+                                                        <AccordionHeader onClick={() => handleOpen(faq.id)} className='font-roboto font-medium text-black border-0 text-xl md:text-2xl'>
                                                             {faq.question}
                                                         </AccordionHeader>
                                                         <AccordionBody
@@ -141,9 +169,6 @@ export default function Faq() {
                                             </TabPanel>
                                         ))}
                                     </div>
-                                    {/* <div className='flex-1 h-full bg-white rounded-xl shadow-custom bg-opacity-30'>
-                                        <img src={faq} alt="" className='object-contain min-h-[400px]' />
-                                    </div> */}
                                 </div>
                             </TabContext>
                         </Box>

@@ -14,16 +14,17 @@
   }
 
   body {
-    @apply font-roboto font-light bg-nude-white
+    @apply font-roboto font-light bg-nude-white leading-normal
   }
 
   .max-w-container {
-    @apply max-w-[90rem] px-10 w-full mx-auto
+    @apply max-w-[90rem] px-6 w-full mx-auto
   }
 
   h1 {
     font-size: clamp(1.875rem, 1.5rem + 2.8169vw, 3.75rem);
-    @apply font-awaken capitalize leading-normal
+
+    @apply font-awaken capitalize
   }
 
   h2 {
@@ -56,9 +57,7 @@
       radial-gradient(circle at 85% 0%, rgba(216, 216, 216, 1), rgba(251, 251, 251, 0)),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 293 293' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='6.11' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 
-
-
-    background-blend-mode: multiply, multiply;
+    background-blend-mode: multiply;
 
   }
 
@@ -79,7 +78,7 @@
 }
 
 @layer utilities {
-  .btn-shadow {
-    @apply shadow-custom hover:translate-y-[1px] hover:shadow-hoverCustom;
-  }
+  /* .btn-shadow {
+    @apply shadow-custom-shadow hover:translate-y-[1px] hover:shadow-customer-hover;
+  } */
 }

@@ -22,28 +22,19 @@ module.exports = withMT({
         roboto: ['roboto', 'sans-serif'],
         awaken: ['awaken', 'sans-serif'],
       },
+      lineHeight: {
+        normal: '1.618',
+      },
       colors: {
         blue: '#8284B7',
-        'nude-red': '#D58D8D',
+        'light-blue': '#e6e6f0',
+        'bright-blue': '#868AF3',
         'nude-white': '#f5f5f5',
         'darker-white': '#E1DCD0',
-        'light-peach': '#FFDFDF',
-        'light-purple': '#E2D8FF',
         'accent': '#32302f',
         'text-gray': '#505457'
       },
 
-      boxShadow: {
-        'custom': '0 2px 10px rgba(0, 0, 0, 0.1)',
-        'glow': '0 0px 10px rgba(238, 81, 255, 0.25)',
-        'tag': 'inset 4px 3px 8px rgba(0, 0, 0, 0.15)',
-        'inner': 'inset 3px 3px 5px rgba(0 0 0 0.75)',
-        'icon': 'inset 4px 4px 8px rgba(0, 0, 0, 0.25)',
-        'inset-2xs': 'inset 0 1px rgb(0 0 0 / 0.05)',
-        'inset-xs': 'inset 0 1px 1px rgb(0 0 0 / 0.05)',
-        'inset-sm': 'inset 0 2px 4px rgb(0 0 0 / 0.05)',
-        'inset-white/20': 'inset 0 4px 8px rgba(255, 255, 255, 0.2)',
-      },
       ringColor: {
         'white/15': 'rgba(255, 255, 255, 0.15)',
       },
@@ -51,9 +42,24 @@ module.exports = withMT({
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
+
       boxShadow: {
-        custom: '3px 3px 2px rgba(0, 0, 0, 0.1), inset 2px 3px 4px rgba(255, 255, 255, 0.3)',
-        hoverCustom: 'inset 2px 2px 5px rgba(0, 0, 0, 0.1)',
+        'custom-btn': 'inset 4px 4px 8px rgba(255, 255, 255, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2)',
+        'custom-hover': 'inset 3px 3px 5px rgba(0, 0, 0, 0.2)',
+        'hover-white': 'inset 3px 3px 5px rgba(255, 255, 255, 0.75)',
+        'custom': '0 2px 10px rgba(0, 0, 0, 0.1)',
+        'glow': '0 0px 10px rgba(238, 81, 255, 0.25)',
+
+        'inner': 'inset 4px 4px 10px rgba(0, 0, 0, 0.1), inset -2px -2px 2px rgba(255, 255, 255, 0.5)',
+
+        'icon': 'inset 4px 4px 8px rgba(0, 0, 0, 0.25)',
+
+        'feature': 'inset 5px 5px 10px rgba(255, 255, 255, 0.2), inset -2px -2px 8px rgba(0, 0, 0, 0.1)',
+
+        'card-glow': 'inset 2px 2px 6px rgba(255, 255, 255, 0.5), inset -2px -2px 4px rgba(0, 0, 0, 0.2), 0px 0px 15px rgba(175, 183, 210, .5)',
+
+        faq: '3px 3px 2px rgba(0,0,0,0.1),inset 2px 3px 4px rgba(255,255,255,0.5)'
+
       },
     },
   },

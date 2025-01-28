@@ -1,40 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import Tag from "../Tag";
 import IonIcon from "@reacticons/ionicons";
 import PrimaryBtn from "../PrimaryBtn";
 import SecondaryBtn from "../SecondaryBtn";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Price() {
     const [isYearly, setIsYearly] = useState(false);
+    const planRefs = useRef([])
     const { ref, inView } = useInView({
-        threshold: 0.25,
+        threshold: 0.20,
         triggerOnce: false,
     });
 
     const pricingPlans = [
         {
             id: "1",
-            type: "Basic Plan",
+            type: "Basic",
             monthlyPrice: 15,
             yearlyPrice: 150,
             description: "Best for individuals managing personal finances on a budget.",
             btnType: "secondary",
+            btnText: 'Sign up now',
             features: [
                 "Account Management Tools",
                 "Expense tracking",
                 "Limited analytics reports (e.g., last 3 months)",
                 "Email support only",
             ],
-            style: "bg-gradient-to-b from-white/25 via-[#d3dde7]/25 to-blue/25 backdrop-blur-sm border-2 border-nude-white border-opacity-25 shadow-custom",
+            style: " bg-gradient-to-b from-white/30 to-blue/30 backdrop-blur-sm  shadow-custom-btn",
         },
         {
             id: "2",
-            type: "Pro Plan",
+            type: "Pro",
             monthlyPrice: 35,
             yearlyPrice: 350,
             description: "Best for professionals and small business owners looking for advanced insights.",
             btnType: "primary",
+            btnText: 'Start free trial',
             features: [
                 "All Basic Plan features",
                 "Advanced analytics with AI insights",
@@ -42,16 +50,17 @@ export default function Price() {
                 "Priority customer support (email & chat)",
                 "Custom financial goal setting",
             ],
-            style: "bg-white bg-opacity-25 backdrop-blur-sm border-2 border-nude-white border-opacity-25 shadow-glow",
+            style: "bg-white bg-opacity-30 shadow-card-glow",
             badge: isYearly ? "Best Saving" : "Most Popular",
         },
         {
             id: "3",
-            type: "Business Plan",
-            monthlyPrice: 99,
+            type: "Business",
+            monthlyPrice: '99+',
             yearlyPrice: 990,
             description: "Best for growing businesses and teams needing robust financial tools.",
             btnType: "secondary",
+            btnText: 'Contact Sales',
             features: [
                 "All Pro Plan features",
                 "Team account management",
@@ -59,9 +68,27 @@ export default function Price() {
                 "Smart payroll tools",
                 "Advanced multi-user permissions",
             ],
-            style: "bg-gradient-to-b from-white/25 via-[#d3dde7]/25 to-blue/25 backdrop-blur-sm border-2 border-nude-white border-opacity-25 shadow-custom",
+            style: "shadow-custom-btn bg-gradient-to-b from-white/30 to-blue/30 backdrop-blur-sm ",
         },
     ];
+
+    useGSAP(() => {
+        gsap.fromTo(
+            planRefs.current, { opacity: 0, y: 80 },
+            {
+                opacity: 1,
+                y: 1,
+                duration: 1,
+                ease: 'power2.out',
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: '#price',
+                    start: 'top 20%',
+                    toggleActions: "play none none reverse",
+                }
+            }
+        );
+    }, [])
 
     return (
         <section
@@ -73,33 +100,36 @@ export default function Price() {
                 <div>
                     <Tag text="Deals" classes="mx-auto" />
                     <h2 className={`text-center mt-2 ${inView ? 'text-white' : 'text-accent'}`}>Pricing That Works for You</h2>
-                    <div className="flex justify-center items-center mt-6 bg-white bg-opacity-25 w-fit mx-auto rounded-full p-1 relative z-[99]">
+
+                    <div className="flex justify-center items-center mt-6 bg-white bg-opacity-30 w-fit mx-auto rounded-full p-[7px] relative z-[99] shadow-custom-btn cursor-pointer">
                         <button
                             onClick={() => setIsYearly(false)}
-                            className={`px-4 py-2 rounded-full text-base tracking-wider font-medium ${!isYearly ? "bg-blue text-white" : "text-gray-400"
+                            className={`px-4 py-2 rounded-full text-base tracking-wider font-medium transition-all duration-300 cursor-pointer ${!isYearly ? "bg-blue text-white shadow-custom-hover" : "text-gray-300"
                                 }`}
                         >
                             Monthly
                         </button>
                         <button
                             onClick={() => setIsYearly(true)}
-                            className={`px-4 py-2 rounded-full  text-base tracking-wider font-medium ${isYearly ? "bg-blue text-white" : "text-gray-400"
+                            className={`px-4 py-2 rounded-full  text-base tracking-wider font-medium transition-all duration-300 cursor-pointer ${isYearly ? "bg-blue text-white shadow-custom-hover" : "text-gray-300"
                                 }`}
                         >
                             Annually
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col gap-10 items-center justify-center mt-10 md:flex-row md:flex-wrap">
+
+                <div className="flex flex-col gap-10 items-center justify-center mt-14 md:flex-row md:flex-wrap">
                     {pricingPlans.map((plan, index) => (
                         <div
                             key={index}
-                            className={`${plan.style} w-fit p-4 rounded-xl max-w-[25rem]`}
+                            ref={(el) => (planRefs.current[index] = el)}
+                            className={`${plan.style} w-fit px-5 py-6 rounded-2xl max-w-[25rem]`}
                         >
                             <div className="flex justify-between">
-                                <p className="mb-8 text-gray-300">{plan.type}</p>
+                                <p className="mb-8 text-gray-300 font-awaken tracking-wider uppercase">{plan.type}</p>
                                 {plan.badge && (
-                                    <p className="mb-8 px-3 border border-nude-white border-opacity-25 rounded-full bg-white bg-opacity-30 text-white text-base font-medium">
+                                    <p className="mb-8 px-3 py-1 rounded-full bg-white bg-opacity-40 text-white text-base font-medium tracking-wider">
                                         {plan.badge}
                                     </p>
                                 )}
@@ -112,9 +142,9 @@ export default function Price() {
                             </p>
                             <p className="text-gray-300 mb-6">{plan.description}</p>
                             {plan.btnType === "primary" ? (
-                                <PrimaryBtn text="Sign Up Now" />
+                                <PrimaryBtn text={plan.btnText} />
                             ) : (
-                                <SecondaryBtn text="Sign Up Now" />
+                                <SecondaryBtn text={plan.btnText} />
                             )}
 
                             <div className="mt-10 mb-4 flex gap-4 justify-center items-center">
@@ -131,8 +161,8 @@ export default function Price() {
                                         className="flex gap-2 items-center"
                                     >
                                         <IonIcon
-                                            name="checkmark-circle-outline"
-                                            className="text-2xl text-white"
+                                            name="checkmark-circle"
+                                            className="text-2xl text-light-blue"
                                         />
                                         <p className="text-gray-300">{feature}</p>
                                     </div>

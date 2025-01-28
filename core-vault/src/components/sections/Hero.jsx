@@ -12,19 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Hero({ setIsNavDark, heroRef }) {
-    const [isOpen, SetIsOpen] = useState(false);
     const heroInner = useRef(null)
-    const textRef = useRef(null)
-    const navRef = useRef(null)
-    const menuRef = useRef(null)
-    const buttonRef = useRef(null)
-
-    const toggleMenu = () => {
-        SetIsOpen((prev) => !prev);
-        console.log('istoggled')
-    }
 
     useGSAP(() => {
+        if (!heroRef?.current) return;
+
         gsap.to(heroRef.current, {
             padding: '0rem',
             duration: 0.6,
@@ -49,67 +41,6 @@ export default function Hero({ setIsNavDark, heroRef }) {
             }
         });
     }, []);
-
-    useGSAP(() => {
-        const animation = gsap.timeline();
-        animation.to(textRef.current, {
-            y: -10,
-            opacity: 0,
-            duration: .5,
-            ease: 'power2.out',
-        });
-
-        animation.set(textRef.current, {
-            y: 10,
-            opacity: 0,
-            innerText: isOpen ? 'Close' : 'More'
-        });
-        animation.to(textRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: .3,
-            ease: 'power2.out',
-        })
-    }, [isOpen])
-
-    useEffect(() => {
-        if (isOpen) {
-            gsap.to(buttonRef.current, {
-                borderRadius: "1rem 1rem 0 0",
-                duration: 0.5,
-                ease: "power2.out",
-            });
-
-
-            gsap.fromTo(
-                navRef.current,
-                { height: 0, opacity: 0 },
-                { height: "auto", opacity: 1, duration: 0.8, ease: "power2.out" }
-            );
-
-            gsap.fromTo(
-                menuRef.current.children,
-                { opacity: 0, y: -40 },
-                { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }
-            );
-        } else {
-            // Reverse animation for closing
-            gsap.to(navRef.current, {
-                height: 0,
-                opacity: 0,
-                duration: 0.3,
-                ease: "power2.in",
-            });
-            {
-                gsap.to(buttonRef.current, {
-                    borderRadius: "9999px",
-                    duration: 0.5,
-                    ease: "power2.in",
-                });
-            }
-        }
-    }, [isOpen]);
-
     useEffect(() => {
         ScrollTrigger.create({
             trigger: heroRef.current,
@@ -120,24 +51,22 @@ export default function Hero({ setIsNavDark, heroRef }) {
         })
     }, [setIsNavDark])
 
-
-
     return (
         <>
-            <div ref={heroRef} className='p-4 md:p-8 h-screen'>
-                <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col shadow-custom'>
+            <div ref={heroRef} className='p-4 md:p-6 h-screen'>
+                <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col shadow-custom-btn'>
                     <section className='max-w-container h-full flex justify-between items-center mt-20 relative'>
                         <div className='g1 absolute radial-gradient z-10'></div>
                         <div className='md:basis-2/3'>
                             <div className=''>
-                                <h1 className='text-white'>
-                                    One Platform for smarter money management
+                                <h1 className='text-white text-center md:text-left'>
+                                    One Platform for smarter <br /> money management
                                 </h1>
 
-                                <p className='text-white my-8 md:mt-8 md:my-20'>
-                                    The best of banking and technology to streamline your finances. Full control at your fingertips.
+                                <p className='text-white lg:text-xl my-8 md:mt-4 md:mb-14 lg:mb-20 text-center md:text-left'>
+                                    The best of banking and technology to streamline your finances. <br /> Full control at your fingertips.
                                 </p>
-                                <div className='inline-flex flex-col gap-4 md:flex-row'>
+                                <div className='inline-flex flex-col gap-4 mx-auto w-full md:w-fit md:flex-row'>
                                     <PrimaryBtn
                                         text='Join Now'
                                     />
@@ -148,9 +77,8 @@ export default function Hero({ setIsNavDark, heroRef }) {
                             </div>
                         </div>
                         <div className='md:basis-[35%] hidden md:block'>
-                            <Lottie animationData={heroAnimation} style={{ width: '100%', mixBlendMode: 'lighten', opacity: '70%' }} />
-                            <Lottie animationData={expense} style={{ width: '100%', marginTop: '-20px', mixBlendMode: 'lighten', opacity: '70%' }} />
-
+                            <Lottie animationData={heroAnimation} style={{ width: '100%', mixBlendMode: 'luminosity', opacity: '70%' }} className='scale-105' />
+                            <Lottie animationData={expense} style={{ width: '100%', marginTop: '-20px', mixBlendMode: 'luminosity', opacity: '70%' }} className='scale-105' />
                         </div>
                     </section>
                 </div >
