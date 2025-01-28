@@ -14,10 +14,11 @@ jobs:
         with:
           node-version: '20'
       - name: ⛏️Build Project
+        working-directory: core-vault
         run: |
           npm install
           npm run build
-          working-directory: ./core-vault
+
       - name: 📁 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
