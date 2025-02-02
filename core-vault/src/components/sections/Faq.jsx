@@ -96,6 +96,14 @@ export default function Faq() {
                                 }}>
                                     <TabList onChange={handleChange} aria-label="FAQs"
                                         sx={{
+                                            display: "flex",
+                                            overflowX: "auto", // Enables scrolling
+                                            whiteSpace: "nowrap", // Prevents text wrapping
+                                            maxWidth: "100%", // Ensures it doesn’t overflow the parent container
+                                            scrollbarWidth: "none", // Hide scrollbar (for Firefox)
+                                            "&::-webkit-scrollbar": {
+                                                display: "none", // Hide scrollbar (for Chrome/Safari)
+                                            },
                                             borderRadius: '50px',
                                             padding: '4px',
                                             '& .MuiTab-root': {
@@ -109,10 +117,9 @@ export default function Faq() {
                                                 fontFamily: 'roboto',
                                                 fontWeight: 'bold',
                                                 transition: 'all 0.3s ease',
-                                                marginRight: '20px',
+                                                marginRight: '15px',
                                                 backgroundColor: '#f5f5f5',
                                                 boxShadow: '3px 3px 2px rgba(0,0,0,0.1),inset 2px 3px 4px rgba(255,255,255,0.5)',
-                                                overflow: 'visible',
                                                 transitionProperty: 'all',
                                                 transitionDuration: '500ms'
                                             },
@@ -132,8 +139,7 @@ export default function Faq() {
                                                 boxShadow: 'inset 1px 1px 6px rgba(0,0,0,0.1), inset -1px -1px 3px rgba(243,233,238,0.5)',
                                                 transform: 'translate(.5px, .5px)',
                                                 transitionDuration: '300ms'
-                                            }
-
+                                            },
                                         }}
                                     >
                                         {faqData.map((item, index) => (
@@ -145,6 +151,10 @@ export default function Faq() {
                                     <div className='flex-1 pl-2'>
                                         {faqData.map((category, index) => (
                                             <TabPanel
+                                                sx={{
+                                                    padding: '0px',
+                                                    marginTop: '10px',
+                                                }}
                                                 key={index} value={`${index}`}>
                                                 {category.questions.map((faq) => (
                                                     <Accordion

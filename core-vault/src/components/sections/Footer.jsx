@@ -62,15 +62,15 @@ export default function Footer() {
 
         }, footerRef);
 
-        ScrollTrigger.refresh();
 
         return () => {
             ctx.revert();
         };
 
     }, [])
-
-
+    useGSAP(() => {
+        ScrollTrigger.refresh(); // Manually force GSAP to recalculate trigger points
+    });
 
 
     return (
@@ -108,13 +108,13 @@ export default function Footer() {
                                     <IonIcon name="mail-outline" className='border border-nude-white border-opacity-20 bg-white bg-opacity-20 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-instagram" className='bg-white bg-opacity-10 text-3xl text-white border border-nude-white  p-3 rounded-full border-opacity-20  shadow-custom-btn' />
+                                    <IonIcon name="logo-instagram" className='bg-white bg-opacity-10 text-3xl text-white  p-3 rounded-full  shadow-custom-btn' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-facebook" className='bg-white bg-opacity-10 text-3xl text-white border border-nude-white border-opacity-20  p-3 rounded-full  shadow-custom-btn' />
+                                    <IonIcon name="logo-facebook" className='bg-white bg-opacity-10 text-3xl text-white   p-3 rounded-full  shadow-custom-btn' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-linkedin" className='bg-white bg-opacity-10 text-3xl text-white border border-nude-white border-opacity-20  p-3 rounded-full  shadow-custom-btn' />
+                                    <IonIcon name="logo-linkedin" className='bg-white bg-opacity-10 text-3xl text-white   p-3 rounded-full  shadow-custom-btn' />
                                 </a></li>
                             </ul>
                         </div>

@@ -26,7 +26,7 @@ export default function Features() {
 
     const containerRef = useRef(null);
     const bankContainerRef = useRef(null);
-    const lottieRef = useRef(null);
+    // const lottieRef = useRef(null);
     const [playAnimation, setPlayAnimation] = useState(false);
 
     useGSAP(() => {
@@ -234,7 +234,6 @@ export default function Features() {
                             <div className='flex-1 flex justify-center'>
                                 <Lottie
                                     className='ai-img w-[80%] md:w-full'
-                                    ref={lottieRef}
                                     animationData={insight}
                                     loop
                                     autoplay
@@ -249,7 +248,6 @@ export default function Features() {
                             <div className='flex justify-center items-center'>
                                 <Lottie
                                     className='currency-img w-[50%]'
-                                    ref={lottieRef}
                                     animationData={currency}
                                     loop
                                     autoplay

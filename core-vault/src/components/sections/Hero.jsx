@@ -54,7 +54,7 @@ export default function Hero({ setIsNavDark, heroRef }) {
     return (
         <>
             <div ref={heroRef} className='p-4 md:p-6 h-screen'>
-                <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col shadow-custom-btn'>
+                <div ref={heroInner} className='hero h-full w-full rounded-3xl flex flex-col'>
                     <section className='max-w-container h-full flex justify-between items-center mt-20 relative'>
                         <div className='g1 absolute radial-gradient z-10'></div>
                         <div className='md:basis-2/3'>
