@@ -14,63 +14,50 @@ import footerImg from '../../../public/images/test2.png'
 export default function Footer() {
     const footerRef = useRef(null);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.to(
-                footerRef.current, {
-                padding: '0rem',
-                duration: 1.5,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: footerRef.current,
-                    start: 'top center',
-                    end: 'bottom bottom',
-                    scrub: 1.2,
-                    toggleActions: 'play complete play complete',
-                }
-            });
-
-            gsap.to(
-                '.inner-container',
-                {
-                    borderRadius: '0rem',
-                    duration: 1.5,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: footerRef.current,
-                        start: 'top 50%',
-                        end: 'bottom bottom',
-                        scrub: 1.2,
-                        toggleActions: 'play none none reverse',
-                    }
-                });
-
-            gsap.fromTo(
-                '.footer-text', { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: footerRef.current,
-                        start: 'top 20%',
-                        toggleActions: 'play none none reverse',
-                    }
-                }
-            )
-
-        }, footerRef);
-
-
-        return () => {
-            ctx.revert();
-        };
-
-    }, [])
     useGSAP(() => {
-        ScrollTrigger.refresh();
-    });
+        if (!footerRef.current) {
+            console.error("⚠️ footerRef is null, GSAP cannot animate!");
+            return;
+        }
+
+        gsap.to(footerRef.current, {
+            padding: '0rem',
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: footerRef.current,
+                start: 'top center',
+                end: '+=300',
+                duration: 2,
+                scrub: true,
+            },
+        });
+
+        gsap.to('.inner-container', {
+            borderRadius: '0px',
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: footerRef.current,
+                start: 'top center',
+                end: '+=300',
+                scrub: true,
+            }
+        });
+
+        gsap.fromTo('.footer-text', { opacity: 0, y: 50 }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: footerRef.current,
+                start: 'top 20%',
+                toggleActions: 'play none none reverse',
+            }
+        });
+    }, [footerRef]);
+
 
 
     return (
@@ -105,16 +92,16 @@ export default function Footer() {
 
                             <ul className='flex gap-4 my-2'>
                                 <li><a href="#">
-                                    <IonIcon name="mail-outline" className='border border-nude-white border-opacity-20 bg-white bg-opacity-20 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
+                                    <IonIcon name="mail-outline" className='bg-white bg-opacity-30 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-instagram" className='bg-white bg-opacity-10 text-3xl text-white  p-3 rounded-full  shadow-custom-btn' />
+                                    <IonIcon name="logo-instagram" className='bg-white bg-opacity-30 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-facebook" className='bg-white bg-opacity-10 text-3xl text-white   p-3 rounded-full  shadow-custom-btn' />
+                                    <IonIcon name="logo-facebook" className='bg-white bg-opacity-30 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
                                 </a></li>
                                 <li><a href="#">
-                                    <IonIcon name="logo-linkedin" className='bg-white bg-opacity-10 text-3xl text-white   p-3 rounded-full  shadow-custom-btn' />
+                                    <IonIcon name="logo-linkedin" className='bg-white bg-opacity-30 text-3xl text-white p-3 rounded-full shadow-custom-btn hover:shadow-custom-hover' />
                                 </a></li>
                             </ul>
                         </div>
