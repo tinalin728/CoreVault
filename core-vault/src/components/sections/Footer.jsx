@@ -23,7 +23,7 @@ export default function Footer() {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: footerRef.current,
-                    start: 'top 70%',
+                    start: 'top center',
                     end: 'bottom bottom',
                     scrub: 1.2,
                     toggleActions: 'play complete play complete',
@@ -69,7 +69,7 @@ export default function Footer() {
 
     }, [])
     useGSAP(() => {
-        ScrollTrigger.refresh(); // Manually force GSAP to recalculate trigger points
+        ScrollTrigger.refresh();
     });
 
 
